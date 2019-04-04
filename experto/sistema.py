@@ -21,7 +21,7 @@ class Campo(Fact):
 
 class Experto(KnowledgeEngine):
 
-    @Rule(Campo(ph=P(lambda ph: ph == 7.2)))
+    @Rule(Campo(ph=P(lambda ph: ph==7.2)))
     def regla_1(self):
         yield Campo(Ph.ALCALINO)
         print("> ph:%s " % (Ph.ALCALINO))
