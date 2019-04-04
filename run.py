@@ -1,4 +1,7 @@
-from expert.ExpertSystem import Experto
+from random import choice
+from pyknow import *
+from expert.ExpertSystem import *
+
 
 engine = Experto()
 
