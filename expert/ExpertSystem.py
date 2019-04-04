@@ -1,60 +1,60 @@
 from random import choice
 from pyknow import *
 
-class Ground(Fact):
+class Campo(Fact):
     pass
 
-class Drools(KnowledgeEngine):
+class Experto(KnowledgeEngine):
 
-    @Rule(Ground(ph=P(lambda ph: ph == 7.2)))
+    @Rule(Campo(ph=P(lambda ph: ph == 7.2)))
     def rule_1(self):
-        yield Ground(PH="ALCALINO")
+        yield Campo(PH="ALCALINO")
         print("==> ph: ALCALINO")
         
     
-    @Rule(Ground(ph=P(lambda ph: ph > 6.8) & P(lambda ph: ph < 7.2)))
+    @Rule(Campo(ph=P(lambda ph: ph > 6.8) & P(lambda ph: ph < 7.2)))
     def rule_2(self):
-        yield Ground(PH="LIGERAMENTE ALCALINO")
+        yield Campo(PH="LIGERAMENTE ALCALINO")
         print("==> ph: LIGERAMENTE ALCALINO")
 
-    @Rule(Ground(ph=P(lambda ph: ph<=6.8) & P(lambda ph: ph>= 6.2)))
+    @Rule(Campo(ph=P(lambda ph: ph<=6.8) & P(lambda ph: ph>= 6.2)))
     def rule_3(self):
-        yield Ground(PH="NEUTRO")
+        yield Campo(PH="NEUTRO")
         print("==> ph: NEUTRO")
 
-    @Rule(Ground(ph=P(lambda ph: ph>5.6) & P(lambda ph: ph<6.2)))
+    @Rule(Campo(ph=P(lambda ph: ph>5.6) & P(lambda ph: ph<6.2)))
     def rule_4(self):
-        yield Ground(PH="LIGERAMENTE ACIDO")
+        yield Campo(PH="LIGERAMENTE ACIDO")
         print("==> ph: LIGERAMENTE ACIDO")
 
-    @Rule(Ground(ph=P(lambda ph: ph <= 5.6)))
+    @Rule(Campo(ph=P(lambda ph: ph <= 5.6)))
     def rule_5(self):
-        yield Ground(PH="ACIDO")
+        yield Campo(PH="ACIDO")
         print("==> ph: ACIDO")
 
-    @Rule(Ground(ce=P(lambda ce: ce < 0.8)))
+    @Rule(Campo(ce=P(lambda ce: ce < 0.8)))
     def rule_6(self):
-        yield Ground(CE="BAJA")
+        yield Campo(CE="BAJA")
         print("==> conductividadElectrica: BAJA")
 
-    @Rule(Ground(ce=P(lambda ce: ce >= 0.8)))
+    @Rule(Campo(ce=P(lambda ce: ce >= 0.8)))
     def rule_7(self):
-        yield Ground(CE="ALTA")
+        yield Campo(CE="ALTA")
         print("==> conductividadElectrica: ALTA")
 
-    @Rule(Ground(PH=L("ALCALINO")))
+    @Rule(Campo(PH=L("ALCALINO")))
     def rule_8(self):
         print("\n\n")
         print("==> ExtractoSoluble: True")
 
-    @Rule(Ground(PH=L("LIGERAMENTE ALCALINO")))
+    @Rule(Campo(PH=L("LIGERAMENTE ALCALINO")))
     def rule_9(self):
         print("\n\n")
         print("==> ExtractoSoluble: True")
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla >= 40.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla >= 40.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_10(self):
         print("\n\n")
         print("==>")
@@ -63,17 +63,17 @@ class Drools(KnowledgeEngine):
         print("     |-(3) Baja mineralizacion de MO (Baja actvidad microbiologica")
         print("     |-(4) Acumulacion de iones alcalinoterreos")
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena >= 50.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena >= 50.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_11(self):
         print("\n\n")
         print("==>")
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo >= 45.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo >= 45.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_12(self):
         print("\n\n")
         print("==>")
@@ -83,19 +83,19 @@ class Drools(KnowledgeEngine):
         print("     |-(3) Limitaciones fisicas temporales")
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
 
-    @Rule(AND(Ground(arcilla=P(lambda limo: limo <= 40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla <=40.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arcilla=P(lambda limo: limo <= 40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla <=40.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_13(self):
         print("\n\n")
         print("==>")
         print("     |-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     |-(2) Baja disponibilidad de Calcio")
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla >=40.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla >=40.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("BAJA"))))
     def rule_14(self):
         print("\n\n")
         print("==>")
@@ -105,17 +105,17 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Acumulacion de iones alcalinoterreos	")
         print("     |-(5) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena >=50.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena >=50.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("BAJA"))))
     def rule_15(self):
         print("\n\n")
         print("==>")
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo >=45.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo >=45.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("BAJA"))))
     def rule_16(self):
         print("\n\n")
         print("==>")
@@ -125,10 +125,10 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(5) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo <=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla <=40.0)),
-    Ground(PH=L("ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo <=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla <=40.0)),
+    Campo(PH=L("ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_17(self):
         print("\n\n")
         print("==>")
@@ -136,9 +136,9 @@ class Drools(KnowledgeEngine):
         print("     |-(2) Baja disponibilidad de Calcio")
         print("     |-(3) Baja disponibilidad de elementos menores ")
     
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla <=40.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla <=40.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_18(self):
         print("\n\n")
         print("==>")
@@ -150,17 +150,17 @@ class Drools(KnowledgeEngine):
         print("     |-(6) Salinidad en el suelo")
         print("     |-(7) Baja disponibilidad de Fosforo (Precipitación)")
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena >=50.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena >=50.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_19(self):
         print("\n\n")
         print("==>")
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo >=45.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo >=45.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_20(self):
         print("\n\n")
         print("==>")
@@ -169,20 +169,20 @@ class Drools(KnowledgeEngine):
         print("     |-(3) Limitaciones fisicas temporales")
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo <=40.0)),
-    Ground(arena=P(lambda arena: arena <=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla <=40.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo <=40.0)),
+    Campo(arena=P(lambda arena: arena <=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla <=40.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_21(self):
         print("\n\n")
         print("==>")
         print("     |-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     |-(2) Baja disponibilidad de Calcio")
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla >=40.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla >=40.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("BAJA"))))
     def rule_22(self):
         print("\n\n")
         print("==>")
@@ -192,17 +192,17 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Acumulacion de iones alcalinoterreos	")
         print("     |-(5) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena >=50.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena >=50.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("BAJA"))))
     def rule_23(self):
         print("\n\n")
         print("==>")
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo >=45.0)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo >=45.0)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("BAJA"))))
     def rule_24(self):
         print("\n\n")
         print("==>")
@@ -212,11 +212,11 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(5) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo<=40.0)),
-    Ground(arena=P(lambda arena: arena<=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla<=40)),
-    Ground(PH=L("LIGERAMENTE ALCALINO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo<=40.0)),
+    Campo(arena=P(lambda arena: arena<=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla<=40)),
+    Campo(PH=L("LIGERAMENTE ALCALINO")),
+    Campo(CE=L("ALTA"))))
     def rule_25(self):
         print("\n\n")
         print("==>")
@@ -226,73 +226,73 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(5) Baja disponibilidad de elementos menores ")
     
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla>=40.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla>=40.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("ALTA"))))
     def rule_26(self):
         print("     |-(1) Baja mineralizacion de MO (Baja actvidad microbiologica)	")
         print("     |-(2) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(3) Salinidad en el suelo")
     
-    @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena>=50.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("ALTA"))))
     
     def rule_27(self):
         print("     |-(1) Revisar las mediciones realizadas.")
 
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo>=45.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo>=45.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("ALTA"))))
     def rule_28(self):
         print("     |-(1) Salinidad en el suelo")
     
-    @Rule(AND(Ground(limo=P(lambda limo: limo<=40.0)),
-    Ground(arena=P(lambda arena: arena<=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla<=40.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo<=40.0)),
+    Campo(arena=P(lambda arena: arena<=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla<=40.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("ALTA"))))
     def rule_29(self):
         print("\n\n\n")
    
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla>=40.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla>=40.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("BAJA"))))
     def rule_30(self):
         print("     |-(1) Baja mineralizacion de MO (Baja actvidad microbiologica)	")
         print("     |-(2) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(3) Limitaciones de movimiento de agua")
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena>=50.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("BAJA"))))
     def rule_31(self):
         print("\n\n\n")	
         print("     |-(1) Revisar las mediciones realizadas.")
 
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo>=45.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo>=45.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("BAJA"))))
     def rule_32(self):
         print("\n\n\n")	
         print("     |-(1) Coloraciones grises suelo (Glaizeado)")
 
     
     
-    @Rule(AND(Ground(limo=P(lambda limo: limo<=40.0)),
-    Ground(arena=P(lambda arena: arena<=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla<=40.0)),
-    Ground(PH=L("NEUTRO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo<=40.0)),
+    Campo(arena=P(lambda arena: arena<=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla<=40.0)),
+    Campo(PH=L("NEUTRO")),
+    Campo(CE=L("ALTA"))))
     def rule_33(self):
         print("\n\n\n")
     
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla>=40.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla>=40.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_34(self):
         print("     |-(1) Limitaciones de movimiento de agua")
         print("     |-(2) Baja difusion de Oxigeno y flujo de gases")    
@@ -303,16 +303,16 @@ class Drools(KnowledgeEngine):
         print("     |-(7) Baja disponibilidad de Fosforo (Precipitación)")
             
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena>=50.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_35(self):
         print("\n\n\n")
         print("       |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo>=45.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo>=45.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_36(self):
         print("\n\n\n")
 
@@ -320,19 +320,19 @@ class Drools(KnowledgeEngine):
         print("     |-(2) Sulfatos altos")
         print("     |-(3) Impedancia")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo<=40.0)),
-    Ground(arena=P(lambda arena: arena<=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla<=40.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo<=40.0)),
+    Campo(arena=P(lambda arena: arena<=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla<=40.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_37(self):
         print("\n\n\n")
         print("     |-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     |-(2) Baja disponibilidad de Calcio")  
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla>=40.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla>=40.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("BAJA"))))
     def rule_38(self):
           print("     |-(1) Limitaciones de movimiento de agua")
           print("     |-(2) Baja difusion de Oxigeno y flujo de gases")
@@ -340,16 +340,16 @@ class Drools(KnowledgeEngine):
           print("     |-(4) Acumulacion de iones alcalinoterreos	")
           print("     |-(5) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena>=50.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("BAJA"))))
     def rule_39(self):
         print("\n\n\n")	
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo:limo>=45.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(limo=P(lambda limo:limo>=45.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("BAJA"))))
     def rule_40(self):
         print("     |-(1) Coloraciones grises suelo (Glaizeado)")
         print("     |-(2) Suelo Hidromorfico")    
@@ -357,19 +357,19 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(5) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(limo=P(lambda limo:limo<=40.0)),
-    Ground(arcilla=P(lambda arcilla:arcilla<=40.0)),
-    Ground(PH=L("LIGERAMENTE ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo:limo<=40.0)),
+    Campo(arcilla=P(lambda arcilla:arcilla<=40.0)),
+    Campo(PH=L("LIGERAMENTE ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_41(self):
         print("\n\n\n")
         print("     |-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     |-(2) Baja disponibilidad de Calcio")
         print("     |-(3) Baja disponibilidad de elementos menores ")
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla>=40.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla>=40.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_42(self):
         print("\n\n\n")
         print("     |-(1) Limitaciones de movimiento de agua")
@@ -381,16 +381,16 @@ class Drools(KnowledgeEngine):
         print("     |-(7) Contenido de Aluminio")
 
 
-    @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena>=50.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_43(self):
         print("\n\n\n")
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo>=45.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo>=45.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_44(self):
         print("\n\n\n")
 		
@@ -399,36 +399,36 @@ class Drools(KnowledgeEngine):
         print("     |-(3) Impedancia")
 
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo<= 40.0)),
-    Ground(arena=P(lambda arena: arena<=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla<=40.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo<= 40.0)),
+    Campo(arena=P(lambda arena: arena<=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla<=40.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_45(self):
         print("\n\n\n")
 		
         print("     |-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     |-(2) Baja disponibilidad de Calcio")
 
-    @Rule(AND(Ground(arcilla=P(lambda arcilla: arcilla>=40.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla>=40.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("BAJA"))))
     def rule_46(self):
         print("     |-(1) Limitaciones de movimiento de agua")
         print("     |-(2) Baja difusion de Oxigeno y flujo de gases")    
         print("     |-(3) Baja mineralizacion de MO (Baja actvidad microbiologica")
         print("     |-(4) Acumulacion de iones alcalinoterreos	")
         print("     |-(5) Baja disponibilidad de elementos menores ")
-    @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(arena=P(lambda arena: arena>=50.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("BAJA"))))
     def rule_47(self):
         print("\n\n\n")	
         print("     |-(1) Revisar las mediciones realizadas.")
 
-    @Rule(AND(Ground(limo=P(lambda limo: limo>=45.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("BAJA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo>=45.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("BAJA"))))
     def rule_48(self):
         print("\n\n\n")
 		
@@ -438,11 +438,11 @@ class Drools(KnowledgeEngine):
         print("     |-(4) Baja difusion de Oxigeno y flujo de gases")
         print("     |-(5) Baja disponibilidad de elementos menores ")
     
-    @Rule(AND(Ground(limo=P(lambda limo: limo<= 40.0)),
-    Ground(arena=P(lambda arena: arena<=40.0)),
-    Ground(arcilla=P(lambda arcilla: arcilla<=40.0)),
-    Ground(PH=L("ACIDO")),
-    Ground(CE=L("ALTA"))))
+    @Rule(AND(Campo(limo=P(lambda limo: limo<= 40.0)),
+    Campo(arena=P(lambda arena: arena<=40.0)),
+    Campo(arcilla=P(lambda arcilla: arcilla<=40.0)),
+    Campo(PH=L("ACIDO")),
+    Campo(CE=L("ALTA"))))
     def rule_49(self):
         print("\n\n\n")
 		
@@ -453,9 +453,4 @@ class Drools(KnowledgeEngine):
 
 
 
-engine = Drools()
-engine.reset()
-engine.declare(Ground(PH=choice(["ALCALINO"])))
-engine.declare(Ground(CE=choice(["ALTA"])))
-engine.declare(Ground(arcilla=choice([40.0])))
-engine.run()
+
