@@ -23,38 +23,40 @@ class Experto(KnowledgeEngine):
 
     @Rule(Campo(ph=P(lambda ph: ph==7.2)))
     def regla_1(self):
-        yield Campo(Ph.ALCALINO)
         print("> ph:%s " % (Ph.ALCALINO))
+        self.declare(Campo(Ph.ALCALINO))
 
     @Rule(Campo(ph=P(lambda ph: ph > 6.8) & P(lambda ph: ph < 7.2)))
     def regla_2(self):
-        yield Campo(Ph.LIGERAMENTE_ALCALINO)
+        
         print("> ph: %s" % Ph.LIGERAMENTE_ALCALINO)
+        self.declare ( Campo(Ph.LIGERAMENTE_ALCALINO) )
 
     @Rule(Campo(ph=P(lambda ph: ph <= 6.8) & P(lambda ph: ph >= 6.2)))
     def regla_3(self):
-        yield Campo(Ph.NEUTRO)
         print("> ph: %s" % Ph.NEUTRO)
+        self.declare( Campo(Ph.NEUTRO))
+
 
     @Rule(Campo(ph=P(lambda ph: ph > 5.6) & P(lambda ph: ph < 6.2)))
     def regla_4(self):
-        yield Campo(Ph.LIGERAMENTE_ACIDO)
         print("> ph: %s" % Ph.LIGERAMENTE_ACIDO)
+        self.declare(Campo(Ph.LIGERAMENTE_ACIDO))
 
     @Rule(Campo(ph=P(lambda ph: ph <= 5.6)))
     def regla_5(self):
-        yield Campo(Ph.ACIDO)
         print("> ph: %s" % Ph.ACIDO)
+        self.declare ( Campo(Ph.ACIDO) )
 
     @Rule(Campo(ce=P(lambda ce: ce < 0.8)))
     def regla_6(self):
-        yield Campo(Ce.BAJA)
         print("> conductividadElectrica: %s " % Ce.BAJA)
+        self.declare ( Campo(Ce.BAJA) )
 
     @Rule(Campo(ce=P(lambda ce: ce >= 0.8)))
     def regla_7(self):
-        yield Campo(Ce.ALTA)
         print("> conductividadElectrica: %s" % Ce.ALTA)
+        self.declare ( Campo(Ce.ALTA) )
 
     @Rule(Campo(Ph.ALCALINO))
     def regla_8(self):
@@ -260,8 +262,7 @@ class Experto(KnowledgeEngine):
     def regla_28(self):
         print("     *-(1) Salinidad en el suelo")
 
-    """TODO: Empezar desde la 29, hice hasta la 28, cambié nombres
-        Y prints
+    """TODO: TODO JAJAJA 
     """
 
     @Rule(AND(Campo(limo=P(lambda limo: limo <= 40.0)),
@@ -455,7 +456,6 @@ class Experto(KnowledgeEngine):
               Campo(Ce.ALTA)))
     def regla_49(self):
         print("\n\n\n")
-
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
         print("     *-(3) Baja disponibilidad de elementos menores ")
