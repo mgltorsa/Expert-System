@@ -60,20 +60,20 @@ class Experto(KnowledgeEngine):
 
     @Rule(Campo(Ph.ALCALINO))
     def regla_8(self):
-        print("\n\n")
+        print("\n")
         print("> ExtractoSoluble: True")
 
     @Rule(Campo(Ph.LIGERAMENTE_ALCALINO))
     def regla_9(self):
-        print("\n\n")
+        print("\n")
         print("> ExtractoSoluble: True")
 
     @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla >= 40.0)),
               Campo(Ph.ALCALINO),
               Campo(Ce.ALTA)))
     def regla_10(self):
-        print("\n\n")
-        print(">")
+        print("\n")
+        print("-----------------------------------------------------------------------------")
         print("     *-(1) Limitaciones de movimiento de agua")
         print("     *-(2) Baja difusion de Oxigeno y flujo de gases")
         print("     *-(3) Baja mineralizacion de MO (Baja actvidad microbiologica")
@@ -83,7 +83,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.ALTA)))
     def regla_11(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Revisar las mediciones realizadas.")
 
@@ -91,7 +91,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.ALTA)))
     def regla_12(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Revisar las mediciones realizadas.")
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
@@ -104,7 +104,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.ALTA)))
     def regla_13(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
@@ -113,7 +113,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.BAJA)))
     def regla_14(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Limitaciones de movimiento de agua")
         print("     *-(2) Baja difusion de Oxigeno y flujo de gases")
@@ -125,7 +125,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.BAJA)))
     def regla_15(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Revisar las mediciones realizadas.")
 
@@ -133,7 +133,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.BAJA)))
     def regla_16(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
         print("     *-(2) Suelo Hidromorfico")
@@ -146,7 +146,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ALCALINO),
               Campo(Ce.ALTA)))
     def regla_17(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
@@ -156,7 +156,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.ALTA))
     def regla_18(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Limitaciones de movimiento de agua")
         print("     *-(2) Baja difusion de Oxigeno y flujo de gases")
@@ -170,7 +170,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.ALTA))
     def regla_19(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Revisar las mediciones realizadas.")
 
@@ -178,7 +178,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.ALTA))
     def regla_20(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
         print("     *-(2) Suelo Hidromorfico")
@@ -191,7 +191,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.ALTA))
     def regla_21(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
@@ -200,7 +200,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.BAJA))
     def regla_22(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Limitaciones de movimiento de agua")
         print("     *-(2) Baja difusion de Oxigeno y flujo de gases")
@@ -212,7 +212,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.BAJA))
     def regla_23(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Revisar las mediciones realizadas.")
 
@@ -220,7 +220,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.BAJA))
     def regla_24(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
         print("     *-(2) Suelo Hidromorfico")
@@ -234,7 +234,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ALCALINO)),
           Campo(Ce.ALTA))
     def regla_25(self):
-        print("\n\n")
+        print("\n")
         print(">")
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
         print("     *-(2) Suelo Hidromorfico")
@@ -271,7 +271,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.NEUTRO),
               Campo(Ce.ALTA)))
     def regla_29(self):
-        print("\n\n\n")
+        print("\n\n")
 
     @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla >= 40.0)),
               Campo(Ph.NEUTRO),
@@ -285,14 +285,14 @@ class Experto(KnowledgeEngine):
               Campo(Ph.NEUTRO),
               Campo(Ce.BAJA)))
     def regla_31(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Revisar las mediciones realizadas.")
 
     @Rule(AND(Campo(limo=P(lambda limo: limo >= 45.0)),
               Campo(Ph.NEUTRO),
               Campo(Ce.BAJA)))
     def regla_32(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
 
     @Rule(AND(Campo(limo=P(lambda limo: limo <= 40.0)),
@@ -301,7 +301,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.NEUTRO),
               Campo(Ce.ALTA)))
     def regla_33(self):
-        print("\n\n\n")
+        print("\n\n")
 
     @Rule(AND(Campo(arcilla=P(lambda arcilla: arcilla >= 40.0)),
               Campo(Ph.LIGERAMENTE_ACIDO),
@@ -319,14 +319,14 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ACIDO),
               Campo(Ce.ALTA)))
     def regla_35(self):
-        print("\n\n\n")
+        print("\n\n")
         print("       *-(1) Revisar las mediciones realizadas.")
 
     @Rule(AND(Campo(limo=P(lambda limo: limo >= 45.0)),
               Campo(Ph.LIGERAMENTE_ACIDO),
               Campo(Ce.ALTA)))
     def regla_36(self):
-        print("\n\n\n")
+        print("\n\n")
 
         print("     *-(1) Contenido de Aluminio")
         print("     *-(2) Sulfatos altos")
@@ -338,7 +338,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ACIDO),
               Campo(Ce.ALTA)))
     def regla_37(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
 
@@ -356,7 +356,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ACIDO),
               Campo(Ce.BAJA)))
     def regla_39(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Revisar las mediciones realizadas.")
 
     @Rule(AND(Campo(limo=P(lambda limo: limo >= 45.0)),
@@ -374,7 +374,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.LIGERAMENTE_ACIDO),
               Campo(Ce.ALTA)))
     def regla_41(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
         print("     *-(3) Baja disponibilidad de elementos menores ")
@@ -383,7 +383,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ACIDO),
               Campo(Ce.ALTA)))
     def regla_42(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Limitaciones de movimiento de agua")
         print("     *-(2) Baja difusion de Oxigeno y flujo de gases")
         print("     *-(3) Acumulacion de iones alcalinoterreos	")
@@ -396,14 +396,14 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ACIDO),
               Campo(Ce.ALTA)))
     def regla_43(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Revisar las mediciones realizadas.")
 
     @Rule(AND(Campo(limo=P(lambda limo: limo >= 45.0)),
               Campo(Ph.ACIDO),
               Campo(Ce.ALTA)))
     def regla_44(self):
-        print("\n\n\n")
+        print("\n\n")
 
         print("     *-(1) Contenido de Aluminio")
         print("     *-(2) Sulfatos altos")
@@ -415,7 +415,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ACIDO),
               Campo(Ce.ALTA)))
     def regla_45(self):
-        print("\n\n\n")
+        print("\n\n")
 
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
@@ -434,14 +434,14 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ACIDO),
               Campo(Ce.BAJA)))
     def regla_47(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Revisar las mediciones realizadas.")
 
     @Rule(AND(Campo(limo=P(lambda limo: limo >= 45.0)),
               Campo(Ph.ACIDO),
               Campo(Ce.BAJA)))
     def regla_48(self):
-        print("\n\n\n")
+        print("\n\n")
 
         print("     *-(1) Coloraciones grises suelo (Glaizeado)")
         print("     *-(2) Suelo Hidromorfico")
@@ -455,7 +455,7 @@ class Experto(KnowledgeEngine):
               Campo(Ph.ACIDO),
               Campo(Ce.ALTA)))
     def regla_49(self):
-        print("\n\n\n")
+        print("\n\n")
         print("     *-(1) Baja disponibilidad de Fosforo (Precipitación)")
         print("     *-(2) Baja disponibilidad de Calcio")
         print("     *-(3) Baja disponibilidad de elementos menores ")
