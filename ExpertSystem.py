@@ -1,6 +1,5 @@
-from pyknow import KnowledgeEngine;
-from pyknow import *;
-from random import choice;
+from random import choice
+from pyknow import *
 
 class Ground(Fact):
     pass
@@ -238,7 +237,8 @@ class Drools(KnowledgeEngine):
     @Rule(AND(Ground(arena=P(lambda arena: arena>=50.0)),
     Ground(PH=L("NEUTRO")),
     Ground(CE=L("ALTA"))))
-    def rule_27(slef):
+    
+    def rule_27(self):
         print("     |-(1) Revisar las mediciones realizadas.")
 
 
